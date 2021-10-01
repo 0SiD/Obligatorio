@@ -16,7 +16,7 @@ public class Main {
 		
 		// Variables.
 		usuarios.add("administrador");
-		pines.add(1234);
+		pines.add(pin_defecto);
 		
 		Funciones.inicar_sesion();
 		
