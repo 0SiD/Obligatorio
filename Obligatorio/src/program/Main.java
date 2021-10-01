@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 	
-	static ArrayList<String> users = new ArrayList<>();
+	static ArrayList<String> usuarios = new ArrayList<>();
 	static ArrayList<Integer> pines = new ArrayList<>();
 	static Scanner sc = new Scanner(System.in);
 	
@@ -13,20 +13,22 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		// Variables.
 		
-		users.add("administrador");
+		// Variables.
+		usuarios.add("administrador");
 		pines.add(1234);
+		
+		Funciones.inicar_sesion();
 		
 		// Place holder.
 		
-		Utilidades.AdministradorUsuarios();
+		Utilidades.CrearUsuario();
 		Utilidades.CambiarPin(pines.get(0));
 		
 		System.out.println("\nTabla de usuarios:\n");
 		
-		for (var x: users) 
-			System.out.println("\t %s | %s".formatted(x, pines.get(users.indexOf(x))));
+		for (var x: usuarios) 
+			System.out.println("\t %s | %s".formatted(x, pines.get(usuarios.indexOf(x))));
 		
 		
 	}	

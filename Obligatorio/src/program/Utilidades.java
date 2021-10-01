@@ -1,14 +1,12 @@
 package program;
 
-import java.util.Arrays;
-
 public class Utilidades {
-	public static void AdministradorUsuarios() {
+	
+	public static void CrearUsuario() {
 			
-			// Crea el scanner, e inicializa las variables necesarias.
+			// Se inicializa la variable para el nombre del futuro usuario.
 			
 			String nombre_usuario;	
-			
 			
 			// Se le pide el nombre del usuario.
 			
@@ -25,16 +23,16 @@ public class Utilidades {
 		
 			// Se añade el usuario, con el pin por defecto.
 			
-			Main.users.add(nombre_usuario);
+			Main.usuarios.add(nombre_usuario);
 			Main.pines.add(Main.pin_defecto);
 			
 		}
 	
 	public static void CambiarPin(int pin) {
 		
-		// Se inicializan las varibales del scanner con el pin y la verificación del pin.
+		// Se inicializan las varibales para el pin anterior y la verificación del mismo.
 		
-		int lastpin = pin;
+		int pin_anterior = pin;
 		int verificacion = 0;
 	
 		// Se ejecuta este trozo de código una vez al menos y se reptite mientras el pin no sea igual a la verificación,
@@ -44,13 +42,14 @@ public class Utilidades {
 			System.out.print("Cree un nuevo pin de al menos 4 números para este nuevo usuario: ");
 			pin = Main.sc.nextInt();
 			
-			// Se comprueba si la cantidad de caracteres del pin es menor a 4.
+			// IF: Se comprueba si la cantidad de caracteres del pin es menor a 4.
+			// ELSE IF: Se comprueba si el pin anterior es igual al nuevo.
 			
 			if ((pin+"").length() < 4) {
 				System.out.print("\nLa cantidad de caracteres del pin es menor a 4");
 				TresPuntos();
 				continue;
-			}else if (lastpin == pin) {
+			}else if (pin_anterior == pin) {
 				System.out.print("\nEl nuevo pin no puede ser igual al anterior");
 				TresPuntos();
 				continue;
@@ -66,7 +65,7 @@ public class Utilidades {
 				TresPuntos();
 			}
 		
-		} while(verificacion != pin || (pin+"").length() < 4 || lastpin == pin);
+		} while(verificacion != pin || (pin+"").length() < 4 || pin_anterior == pin);
 		
 		Main.pines.set(1, pin);
 		
