@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class Main {
 	
+	// Variables.
+	
 	static ArrayList<String> usuarios = new ArrayList<>();
 	static ArrayList<Integer> pines = new ArrayList<>();
 	static Scanner sc = new Scanner(System.in);
@@ -13,10 +15,10 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		// Se crea el usuario administrador.
 		
-		// Variables.
 		usuarios.add("administrador");
-		pines.add(1234);
+		pines.add(pin_defecto);
 		
 		Funciones.inicar_sesion();
 		
