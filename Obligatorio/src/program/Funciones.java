@@ -24,18 +24,18 @@ public class Funciones {
 			 if (usuario_ingresado.equals(x) && pin_ingresado == Main.pines.get(Main.usuarios.indexOf(usuario_ingresado))) {
 				 
 				 System.out.println("\nHaz iniciado sesión como %s.\n".formatted(usuario_ingresado));
-				 return Main.usuarios.indexOf(usuario_ingresado);	
-				 
-			}else{
+				 return Main.usuarios.indexOf(usuario_ingresado);		 
+			} // if
 				
-				// Si no es así se da un mensaje de error.
-				System.out.print("\nEl usuario y/o el pin ingresado son incorrectos");
-				Utilidades.TresPuntos();
+		 } // for
+		 
+			 // Si no es así se da un mensaje de error.
+			 System.out.print("\nEl usuario y/o el pin ingresado son incorrectos");
+			Utilidades.TresPuntos();
 				
-			} // else.
-		 } // for.
+			
 		
-		} // while.
+		} // while
 	
-	} // función.
+	} // función
 }
