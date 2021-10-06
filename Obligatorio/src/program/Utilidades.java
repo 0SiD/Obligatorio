@@ -39,7 +39,7 @@ public class Utilidades {
 		
 		do {
 						
-			System.out.print("Cree un nuevo pin de al menos 4 números para este nuevo usuario: ");
+			System.out.print("Cree un nuevo pin de al menos 4 caracteres para este nuevo usuario: ");
 			pin = Main.sc.nextInt();
 			
 			// IF: Se comprueba si la cantidad de caracteres del pin es menor a 4.
@@ -67,7 +67,7 @@ public class Utilidades {
 		
 		} while(verificacion != pin || (pin+"").length() < 4 || pin_anterior == pin);
 		
-		Main.pines.set(1, pin);
+		Main.pines.set(Main.usuario_actual, pin);
 		
 	}
 	
