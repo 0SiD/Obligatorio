@@ -23,9 +23,10 @@ public class Utilidades {
 		
 			// Se añade el usuario, con el pin por defecto.
 			
-			Main.usuarios.add(nombre_usuario);
-			Main.pines.add(Main.pin_defecto);
 			
+			Funciones.agregar_usuario(nombre_usuario);
+			Funciones.agregar_pin(Main.pin_defecto);
+						
 		}
 	
 	public static void CambiarPin(int pin) {
@@ -67,7 +68,7 @@ public class Utilidades {
 		
 		} while(verificacion != pin || (pin+"").length() < 4 || pin_anterior == pin);
 		
-		Main.pines.set(Main.usuario_actual, pin);
+		Main.pines[Main.usuario_actual]=pin;
 		
 	}
 	
