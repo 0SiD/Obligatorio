@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class Funciones {
 	public static void agregar_usuario(String name) {
-		// Se crea una copia del arreglo, aumentando su longitud a 1 y se le agrega el nombre de usuario pasado como argumento.
+		/* Se crea una copia del arreglo, aumentando su longitud en 1 y se le agrega el nombre de usuario pasado como argumento.
+		   Al final este arreglo_copia se guarda en el Main.usuarios. */
 		
 		String[] arreglo_copia = Arrays.copyOf(Main.usuarios, Main.usuarios.length + 1);
 		arreglo_copia[arreglo_copia.length-1] = name;
@@ -13,7 +14,8 @@ public class Funciones {
 	}
 	
 	public static void agregar_pin(int pin) {	
-		// Se crea una copia del arreglo, aumentando su longitud a 1 y se le agrega el pin pasado como argumento.
+		/* Se crea una copia del arreglo, aumentando su longitud en 1 y se le agrega el pin ingresado como argumento.
+		   Al final este arreglo_copia se guarda en el Main.pines. */
 		
 		int[] arreglo_copia = Arrays.copyOf(Main.pines, Main.pines.length + 1);
 		arreglo_copia[arreglo_copia.length-1] = pin;
@@ -21,9 +23,9 @@ public class Funciones {
 	}
 	
 	public static String[] remover(String[] arreglo, int numero) { 
-		/* Se crea una copia del arreglo y si el elemento que se busca esta en la mitad del mismo este se reacomoda usando
-		   ese while, sacando el elemento es cuestión para que al final se reduzca la longitud del arreglo y se devuelva
-		   para poder setearlo en una variable.*/
+		/* Se crea una copia del arreglo, y si el elemento que se busca esta en la mitad del mismo este se reacomoda usando
+		   ese while sacando el elemento en cuestión, para que al final se reduzca la longitud del arreglo y se devuelva
+		   para poder setearlo en una variable. */
 		
 		String[] arreglo_copia = arreglo; 
 		
