@@ -1,4 +1,4 @@
-package program;
+package programa;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -15,6 +15,7 @@ public class Main {
 	
 	static String[] usuarios = {"administrador"};
 	static int[] pines = {pin_defecto};
+	static int[] fondos = {-1};
 	
 	
 	public static void main(String[] args) {
@@ -32,10 +33,11 @@ public class Main {
 		// Se itera este pedazo de código por la cantidad de usuarios deseados.
 		
 		for (int i = 0; i < 5; i++) {
-			numero_aleatorio = aleatorio.nextInt(valor_maximo - 0) + 0;			// Se genera un número aleatorio y se guarda en una variable.
+			numero_aleatorio = aleatorio.nextInt(valor_maximo - 0) + 0;		// Se genera un número aleatorio y se guarda en una variable.
 					
-			Funciones.agregar_usuario(nombres[numero_aleatorio]);				// Se busca el nombre al cual equivalga variable.
-			Funciones.agregar_pin(aleatorio.nextInt(9999 - 1111) + 1111);		// Se crea un pin aleatorio.
+			Funciones.agregar_usuario(nombres[numero_aleatorio]);								// Se busca el nombre al cual equivalga variable.
+			pines = Funciones.agregar_entero_arreglo(pines, aleatorio.nextInt(9999 - 1111) + 1111);		// Se crea un pin aleatorio.
+			fondos = Funciones.agregar_entero_arreglo(fondos, 0);
 			
 			// Estos dos datos anteriores se añaden a sus listas correspondientes con sus respectivas funciones.
 			
@@ -45,19 +47,21 @@ public class Main {
 			   Además saca este nombre del arreglo y lo reordena para que no quede un espacio vacío. */
 			
 			valor_maximo--;
-			nombres = Funciones.remover(nombres, numero_aleatorio);
+			Funciones.remover(nombres, numero_aleatorio);
 		}
 		
 		usuario_actual = Funciones.inicar_sesion();
+		Menus.MenuUsuario();
 		
 		// Place holder.
-		
-		Utilidades.CambiarPin(pines[usuario_actual]);
-		
+				
 		System.out.println("\nTabla de usuarios:\n");
-		
 		for (int i = 0; i < usuarios.length; i++)
 			System.out.println("\t %s | %s".formatted(usuarios[i], pines[i]));
+		
+		System.out.println("\nTabla de fondos:\n");
+		for (int i = 0; i < usuarios.length; i++)
+			System.out.println("\t %s | %s".formatted(usuarios[i], fondos[i]));
 		
 		
 	}	

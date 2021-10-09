@@ -1,4 +1,4 @@
-package program;
+package programa;
 
 public class Utilidades {
 	
@@ -25,14 +25,14 @@ public class Utilidades {
 			
 			
 			Funciones.agregar_usuario(nombre_usuario);
-			Funciones.agregar_pin(Main.pin_defecto);
+			Funciones.agregar_entero_arreglo(Main.pines, Main.pin_defecto);
 						
 		}
 	
-	public static void CambiarPin(int pin) {
+	public static void CambiarPin() {
 		
 		// Se inicializan las varibales para el pin anterior y la verificación del mismo.
-		
+		int pin = Main.pines[Main.usuario_actual];
 		int pin_anterior = pin;
 		int verificacion = 0;
 	
