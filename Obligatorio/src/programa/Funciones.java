@@ -59,6 +59,15 @@ public class Funciones {
 			System.out.print("\nEl usuario y/o el pin ingresado son incorrectos");
 			Utilidades.TresPuntos();
 				
-		}
+		}	
+	}
+	public static void tablas(){
+		System.out.println("\nTabla de usuarios:\n");
+		for (int i = 0; i < Main.usuarios.length; i++)
+			System.out.println("\t %s | %s".formatted(Main.usuarios[i], Main.pines[i]));
+		
+		System.out.println("\nTabla de fondos:\n");
+		for (int i = 0; i < Main.usuarios.length; i++)
+			System.out.println("\t %s | %s".formatted(Main.usuarios[i], Main.fondos[i]));
 	}
 }

@@ -54,15 +54,8 @@ public class Main {
 		Menus.MenuUsuario();
 		
 		// Place holder.
-				
-		System.out.println("\nTabla de usuarios:\n");
-		for (int i = 0; i < usuarios.length; i++)
-			System.out.println("\t %s | %s".formatted(usuarios[i], pines[i]));
 		
-		System.out.println("\nTabla de fondos:\n");
-		for (int i = 0; i < usuarios.length; i++)
-			System.out.println("\t %s | %s".formatted(usuarios[i], fondos[i]));
-		
+		Funciones.tablas();
 		
 	}	
 }

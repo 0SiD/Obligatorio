@@ -33,7 +33,7 @@ public class Menus {
 					System.out.println("\nSe han retirado $%s.\n".formatted(a_retirar)
 									 + "Su cuenta a quedado con $%s".formatted(Main.fondos[Main.usuario_actual]));
 				}else{
-					System.out.println("\nEl numero ingresado no es múltiplo de 10.");
+					System.out.println("\nEl numero ingresado no es múltiplo de 100.");
 				}
 				break;
 			
