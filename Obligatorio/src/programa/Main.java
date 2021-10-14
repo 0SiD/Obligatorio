@@ -35,7 +35,7 @@ public class Main {
 		for (int i = 0; i < 5; i++) {
 			numero_aleatorio = aleatorio.nextInt(valor_maximo - 0) + 0;		// Se genera un número aleatorio y se guarda en una variable.
 					
-			Funciones.agregar_usuario(nombres[numero_aleatorio]);								// Se busca el nombre al cual equivalga variable.
+			Funciones.agregar_usuario(nombres[numero_aleatorio]);										// Se busca el nombre al cual equivalga variable.
 			pines = Funciones.agregar_entero_arreglo(pines, aleatorio.nextInt(9999 - 1111) + 1111);		// Se crea un pin aleatorio.
 			fondos = Funciones.agregar_entero_arreglo(fondos, 0);
 			
@@ -49,13 +49,14 @@ public class Main {
 			valor_maximo--;
 			Funciones.remover(nombres, numero_aleatorio);
 		}
-		
-		usuario_actual = Funciones.inicar_sesion();
-		Menus.MenuUsuario();
-		
-		// Place holder.
-		
-		Funciones.tablas();
-		
+		do {
+			usuario_actual = Funciones.inicar_sesion();
+			
+			if (usuario_actual == 0) {
+				Menus.MenuAdministrador();
+			}else {
+				Menus.MenuUsuario();			
+			}
+		}while(true);	
 	}	
 }

@@ -57,17 +57,17 @@ public class Funciones {
 			// Si se comprobaron todos los casos y el usuario no está en el arreglo, se da un mensaje de error.
 			
 			System.out.print("\nEl usuario y/o el pin ingresado son incorrectos");
-			Utilidades.TresPuntos();
-				
+			TresPuntos();				
 		}	
 	}
-	public static void tablas(){
-		System.out.println("\nTabla de usuarios:\n");
-		for (int i = 0; i < Main.usuarios.length; i++)
-			System.out.println("\t %s | %s".formatted(Main.usuarios[i], Main.pines[i]));
+	
+	public static void TresPuntos() {
+		// Se da el efecto de que se queda cargando.
 		
-		System.out.println("\nTabla de fondos:\n");
-		for (int i = 0; i < Main.usuarios.length; i++)
-			System.out.println("\t %s | %s".formatted(Main.usuarios[i], Main.fondos[i]));
+		for(int i = 0; i < 3; i++){
+			try{Thread.sleep(300);}catch(InterruptedException e){;}
+			System.out.print(".");
+		}
+		System.out.println("\n");
 	}
 }

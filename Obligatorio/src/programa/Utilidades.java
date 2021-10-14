@@ -10,9 +10,9 @@ public class Utilidades {
 			
 			// Se le pide el nombre del usuario.
 			
-			System.out.println("Al momento de crear un usuario tome en cuenta los siguentes datos:"
-					+ "\n\t- Solo se va a tomar la primera palabra que haya ingresado, por lo cual no se recomienda utilizar espacios."
-					+ "\n\t- El nombre de usuario no es key sensitive.\n");
+			System.out.println("Al momento de crear un usuario tome en cuenta lo siguente:\n"
+					+ "\nSolo se va a tomar la primera palabra que haya ingresado, por lo cual no se recomienda utilizar espacios."
+					+ "\nEl nombre de usuario no es key sensitive.\n");
 			
 			// Eso es simplemente una espera.
 			
@@ -25,7 +25,12 @@ public class Utilidades {
 			
 			
 			Funciones.agregar_usuario(nombre_usuario);
-			Funciones.agregar_entero_arreglo(Main.pines, Main.pin_defecto);
+			Main.pines = Funciones.agregar_entero_arreglo(Main.pines, Main.pin_defecto);
+			Main.fondos = Funciones.agregar_entero_arreglo(Main.fondos, 0);
+			
+			try{Thread.sleep(300);}catch(InterruptedException e){;}
+			System.out.println("\n// El usuarios se ha creado satisfactoriamente");
+			try{Thread.sleep(100);}catch(InterruptedException e){;}
 						
 		}
 	
@@ -40,7 +45,7 @@ public class Utilidades {
 		
 		do {
 						
-			System.out.print("Cree un nuevo pin de al menos 4 caracteres para este nuevo usuario: ");
+			System.out.print("Cree un nuevo pin de al menos 4 caracteres: ");
 			pin = Main.sc.nextInt();
 			
 			// IF: Se comprueba si la cantidad de caracteres del pin es menor a 4.
@@ -48,11 +53,11 @@ public class Utilidades {
 			
 			if ((pin+"").length() < 4) {
 				System.out.print("\nLa cantidad de caracteres del pin es menor a 4");
-				TresPuntos();
+				Funciones.TresPuntos();
 				continue;
 			}else if (pin_anterior == pin) {
 				System.out.print("\nEl nuevo pin no puede ser igual al anterior");
-				TresPuntos();
+				Funciones.TresPuntos();
 				continue;
 			}
 			
@@ -63,7 +68,7 @@ public class Utilidades {
 			
 			if (verificacion != pin) {	
 				System.out.print("\nLos pines ingresados no coinciden");
-				TresPuntos();
+				Funciones.TresPuntos();
 			}
 		
 		} while(verificacion != pin || (pin+"").length() < 4 || pin_anterior == pin);
@@ -71,14 +76,15 @@ public class Utilidades {
 		Main.pines[Main.usuario_actual]=pin;
 		
 	}
-	
-	public static void TresPuntos() {
-		// Se da el efecto de que se queda cargando.
+	public static void Tabla_Usuarios(){
 		
-		for(int i = 0; i < 3; i++){
-			try{Thread.sleep(300);}catch(InterruptedException e){;}
-			System.out.print(".");
-		}
-		System.out.println("\n");
+		System.out.println("\nTabla de usuarios:\n");
+		for (int i = 0; i < Main.usuarios.length; i++)
+			System.out.println("\t %s - %s".formatted(Main.usuarios[i], Main.pines[i]));
+		
+		System.out.println("\nTabla de fondos:\n");
+		for (int i = 0; i < Main.usuarios.length; i++)
+			System.out.println("\t %s - %s".formatted(Main.usuarios[i], Main.fondos[i]));
+		
 	}
 }
