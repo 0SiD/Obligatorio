@@ -2,42 +2,34 @@ package programa;
 
 public class Utilidades {
 	
-	public static boolean CrearUsuario() {
-			
-			// Se inicializa la variable para el nombre del futuro usuario.
-			
-			String nombre_usuario;	
-			
-			// Se le pide el nombre del usuario.
-			
-			System.out.print("Ingrese el nombre de el nuevo usuario: ");
-			
-			nombre_usuario = Main.sc.next().toLowerCase();
+	public static boolean CrearUsuario(String nombre) {
 		
 			for (int i = 0; i < Main.usuarios.length; i++) {
-				if(Main.usuarios[i].equals(nombre_usuario)) {
-					return false;
+				if(Main.usuarios[i].equals(nombre)) {
+					return true;
 				}
 			}
 
-			// Se a�ade el usuario, con el pin por defecto.
+			// Se añade el usuario, con el pin por defecto.
 			
-			Funciones.agregar_usuario(nombre_usuario);
+			Funciones.agregar_usuario(nombre);
 			Main.pines = Funciones.agregar_entero_arreglo(Main.pines, Main.pin_defecto);
 			Main.fondos = Funciones.agregar_entero_arreglo(Main.fondos, 0);
 			
-			return true;
+			return false;
+			
+			// Cuando la clase devuelve falso es que el usuario no está en la lista.
 			
 		}
 	
 	public static void CambiarPin() {
 		
-		// Se inicializan las varibales para el pin anterior y la verificaci�n del mismo.
+		// Se inicializan las varibales para el pin anterior y la verificación del mismo.
 		int pin = Main.pines[Main.usuario_actual];
 		int pin_anterior = pin;
 		int verificacion = 0;
 	
-		// Se ejecuta este trozo de c�digo una vez al menos y se reptite mientras el pin no sea igual a la verificaci�n,
+		// Se ejecuta este trozo de código una vez al menos y se reptite mientras el pin no sea igual a la verificación,
 		
 		do {
 						
@@ -46,13 +38,18 @@ public class Utilidades {
 			
 			// IF: Se comprueba si la cantidad de caracteres del pin es menor a 4.
 			// ELSE IF: Se comprueba si el pin anterior es igual al nuevo.
+			// ELSE IF: Se comprueba si el pin anterior es igual al pin por defecto.
 			
 			if ((pin+"").length() < 4) {
-				System.out.print("\nLa cantidad de caracteres del pin es menor a 4");
+				System.out.print("La cantidad de caracteres del pin es menor a 4");
 				Funciones.TresPuntos();
 				continue;
 			}else if (pin_anterior == pin) {
-				System.out.print("\nEl nuevo pin no puede ser igual al anterior");
+				System.out.print("El nuevo pin no puede ser igual al anterior");
+				Funciones.TresPuntos();
+				continue;
+			}else if (pin == Main.pin_defecto) {
+				System.out.print("El nuevo pin no puede ser igual al pin por defecto");
 				Funciones.TresPuntos();
 				continue;
 			}

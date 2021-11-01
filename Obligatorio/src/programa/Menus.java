@@ -6,6 +6,11 @@ public class Menus {
 	
 	public static boolean MenuUsuario() {
 			
+		
+			while(Main.pines[Main.usuario_actual] == 1234) {
+				Utilidades.CambiarPin();
+			}
+		
 			while (true) {
 				System.out.println("[Obligatorio ATM]\n"
 								 + "\n 1. Retirar dinero"
@@ -16,7 +21,7 @@ public class Menus {
 								 + "\n 6. Salir");
 				
 				try{Thread.sleep(200);}catch(InterruptedException e){;}
-				System.out.print("\nIngrese una opción: ");
+				System.out.print("\nIngrese una opciÃ³n: ");
 				entrada = Main.sc.nextInt();
 				
 				System.out.println("");
@@ -25,29 +30,29 @@ public class Menus {
 				case 1:
 					
 					System.out.println("Actualmente tiene $%s".formatted(Main.fondos[Main.usuario_actual]));
-					System.out.print("¿Cuanto dinero desea retirar? ");
+					System.out.print("Â¿CuÃ¡nto dinero desea retirar? ");
 					a_retirar = Main.sc.nextInt();
 					
 					if (a_retirar <= 0) {	
-						System.out.println("\nHubo un error al realizar la transacción.");
+						System.out.println("\nHubo un error al realizar la transacciÃ³n.");
 					}else if (a_retirar % 100 == 0) {	
 						Main.fondos[Main.usuario_actual] -= a_retirar;
 						System.out.println("\nSe han retirado $%s.\n".formatted(a_retirar)
 										 + "Su cuenta a quedado con $%s".formatted(Main.fondos[Main.usuario_actual]));
 					}else{
-						System.out.println("\nEl numero ingresado no es múltiplo de 100.");
+						System.out.println("\nEl numero ingresado no es mÃºltiplo de 100.");
 					}
 					break;
 				
 				case 2:
-					System.out.print("¿Cuanto dinero desea cargar? ");
+					System.out.print("Â¿Cuanto dinero desea cargar? ");
 					a_cargar = Main.sc.nextInt();
 					
 					if (a_cargar < 0) {
-						System.out.println("No se pudo realizar la operación.");
+						System.out.println("No se pudo realizar la operaciÃ³n.");
 					}else {
 						Main.fondos[Main.usuario_actual] += a_cargar;
-						System.out.println("¡Su importe se ha añadido con exito!");
+						System.out.println("Â¡Su importe se ha aï¿½adido con exito!");
 					}
 					break;
 					
@@ -61,9 +66,9 @@ public class Menus {
 					System.out.print("\nEsta seguro de hacer esta transaccion (S/n): ");
 					if (Main.sc.next().toLowerCase().equals("s")){
 						if (Utilidades.Transaccion(destinatario, Main.fondos[Main.usuario_actual], monto)) {
-							System.out.println("\n\n¡Se ha realizado la transaccion con éxito! ");
+							System.out.println("\n\nÂ¡Se ha realizado la transaccion con Ã©xito! ");
 						}else {
-							System.out.println("\nHubo un error al realizar la transacción.");
+							System.out.println("\nHubo un error al realizar la transacciÃ³n.");
 						}
 					}
 					break;
@@ -77,11 +82,11 @@ public class Menus {
 					break;
 					
 				case 6:
-					System.out.println("¡Vuelva pronto!\n\n");
+					System.out.println("Â¡Vuelva pronto!\n\n");
 					return true;
 					
 				default:
-					System.out.println("El número ingresado no coincide con ninguna de las opciones del menú.");
+					System.out.println("El nÃºmero ingresado no coincide con ninguna de las opciones del menÃº.");
 					break;
 				}
 				
@@ -93,7 +98,7 @@ public class Menus {
 	
 	public static boolean MenuAdministrador() {
 		
-		boolean usuario_creado;
+		boolean errores_usuario;
 		
 		while(true) {
 			System.out.println("[Obligatorio ATM]\n"
@@ -104,7 +109,7 @@ public class Menus {
 							 + "\n 5. Cerrar programa");
 			
 			try{Thread.sleep(800);}catch(InterruptedException e){;}
-			System.out.print("\nIngrese una opción: ");
+			System.out.print("\nIngrese una opciÃ³n: ");
 			entrada = Main.sc.nextInt();
 			
 			System.out.println("");
@@ -121,18 +126,28 @@ public class Menus {
 				// Una espera.
 				
 				try{Thread.sleep(800);}catch(InterruptedException e){;}
+				String nombre_usuario;
 				
 				do {
-					usuario_creado = Utilidades.CrearUsuario();
+
+					// Se le pide el nombre del usuario.
+
+					System.out.print("Ingrese el nombre de el nuevo usuario: ");				
+					nombre_usuario = Main.sc.next().toLowerCase();
 					
-					if (!usuario_creado) {
-						System.out.println("El nombre de usuario ya está registrado.");
+					// Si se generÃ³ un error al momento de crear el usuario la variable va a valer "true"
+					// Por contrario si no hubo nigÃºn error va a devolver "false"
+					
+					errores_usuario = Utilidades.CrearUsuario(nombre_usuario);
+					
+					if (errores_usuario) {
+						System.out.println("El nombre de usuario ya estÃ¡ registrado.");
 						try{Thread.sleep(200);}catch(InterruptedException e){;}
 						System.out.println("\nVuelva a intentar.");
 						try{Thread.sleep(400);}catch(InterruptedException e){;}
 					}
 					
-				}while(!usuario_creado);
+				}while(errores_usuario);
 				
 				try{Thread.sleep(300);}catch(InterruptedException e){;}
 				System.out.println("\n// El usuarios se ha creado satisfactoriamente");
@@ -149,7 +164,7 @@ public class Menus {
 				break;
 				
 			case 4:
-				System.out.println("¡Vuelva pronto!\n\n");
+				System.out.println("Â¡Vuelva pronto!\n\n");
 				return true;
 				
 			case 5:
@@ -158,7 +173,7 @@ public class Menus {
 					return false;
 				
 			default:
-				System.out.println("El número ingresado no coincide con ninguna de las opciones del menú.");
+				System.out.println("El nÃºmero ingresado no coincide con ninguna de las opciones del menï¿½.");
 				break;
 			}
 			

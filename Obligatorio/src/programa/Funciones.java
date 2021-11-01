@@ -19,8 +19,8 @@ public class Funciones {
 	}
 	
 	public static void remover(String[] arreglo, int numero) { 
-		/* Si el elemento que se quiere quitar de el arreglo esta en la mitad del mismo este se reacomoda usando
-		   ese for sacando el elemento en cuestión, para que al final se reduzca la longitud del arreglo. */
+		/* Si el elemento que se quiere quitar del arreglo esta en la mitad del mismo, este se reacomoda usando
+		   ese "for", sacando el elemento en cuestiÃ³n, para que al final se reduzca la longitud del arreglo. */
 			
 		for(int i = numero+1; i < arreglo.length; i++)
 			arreglo[i-1] = arreglo[i];
@@ -45,16 +45,16 @@ public class Funciones {
 			System.out.print("Ingrese el pin: ");
 			pin_ingresado = Main.sc.nextInt();
 		 
-			// Se comprueba si los datos ingresados están en la lista.
+			// Se comprueba si los datos ingresados estÃ¡n en la lista.
 		 
 			for (int i = 0; i < Main.usuarios.length; i++) {
 				if (usuario_ingresado.equals(Main.usuarios[i]) && pin_ingresado == Main.pines[i]) {
-					System.out.println("\nHaz iniciado sesión como %s.\n".formatted(usuario_ingresado));
+					System.out.println("\nHaz iniciado sesiÃ³n como %s.\n".formatted(usuario_ingresado));
 					return i;
 				} 	
 			}
 		 
-			// Si se comprobaron todos los casos y el usuario no está en el arreglo, se da un mensaje de error.
+			// Si se comprobaron todos los casos y el usuario no estÃ¡ en el arreglo, se da un mensaje de error.
 			
 			System.out.print("\nEl usuario y/o el pin ingresado son incorrectos");
 			TresPuntos();				
