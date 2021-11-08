@@ -10,7 +10,7 @@ public class Menus {
 				System.out.println("[Obligatorio ATM]\n"
 								 + "\n 1. Retirar dinero"
 								 + "\n 2. Cargar saldo"
-								 + "\n 3. Hacer transaccion a otro usuario"
+								 + "\n 3. Hacer transacción a otro usuario"
 								 + "\n 4. Ver saldo de la cuenta"
 								 + "\n 5. Cambiar pin"
 								 + "\n 6. Cerrar sesión");
