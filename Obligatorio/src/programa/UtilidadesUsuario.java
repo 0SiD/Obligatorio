@@ -72,7 +72,7 @@ public class UtilidadesUsuario {
 	public static boolean Transaccion(String usuario, int fondos, int monto) { // Esta función se encarga de las transacciones, devolviendo verdadero si se pudo realizar la transacción o falso si no es así.
 		if (monto <= fondos) {
 			for (int i = 1; i < Main.usuarios.length; i++) {
-				if (Main.usuarios[i].equals(usuario)) {
+				if (Main.usuarios[i].equals(usuario) && i != Main.usuario_actual) {
 					Main.fondos[Main.usuario_actual] -= monto;
 					Main.fondos[i] += monto;
 					return true;
