@@ -5,11 +5,6 @@ public class Menus {
 	static int entrada, a_retirar, a_cargar;
 	
 	public static boolean MenuUsuario() {
-			
-		
-			while(Main.pines[Main.usuario_actual] == 1234) {
-				Utilidades.CambiarPin();
-			}
 		
 			while (true) {
 				System.out.println("[Obligatorio ATM]\n"
@@ -18,45 +13,45 @@ public class Menus {
 								 + "\n 3. Hacer transaccion a otro usuario"
 								 + "\n 4. Ver saldo de la cuenta"
 								 + "\n 5. Cambiar pin"
-								 + "\n 6. Salir");
+								 + "\n 6. Cerrar sesión");
 				
 				try{Thread.sleep(200);}catch(InterruptedException e){;}
-				System.out.print("\nIngrese una opciÃ³n: ");
+				System.out.print("\nIngrese una opción: ");
 				entrada = Main.sc.nextInt();
 				
 				System.out.println("");
 				
 				switch(entrada) {
-				case 1:
+				case 1: // Retirar dinero.
 					
 					System.out.println("Actualmente tiene $%s".formatted(Main.fondos[Main.usuario_actual]));
-					System.out.print("Â¿CuÃ¡nto dinero desea retirar? ");
+					System.out.print("¿Cuánto dinero desea retirar? ");
 					a_retirar = Main.sc.nextInt();
 					
 					if (a_retirar <= 0) {	
-						System.out.println("\nHubo un error al realizar la transacciÃ³n.");
+						System.out.println("\nHubo un error al realizar la transacción.");
 					}else if (a_retirar % 100 == 0) {	
 						Main.fondos[Main.usuario_actual] -= a_retirar;
 						System.out.println("\nSe han retirado $%s.\n".formatted(a_retirar)
 										 + "Su cuenta a quedado con $%s".formatted(Main.fondos[Main.usuario_actual]));
 					}else{
-						System.out.println("\nEl numero ingresado no es mÃºltiplo de 100.");
+						System.out.println("\nEl numero ingresado no es múltiplo de 100.");
 					}
 					break;
 				
-				case 2:
-					System.out.print("Â¿Cuanto dinero desea cargar? ");
+				case 2: // Cargar saldo.
+					System.out.print("¿Cuánto dinero desea cargar? ");
 					a_cargar = Main.sc.nextInt();
 					
 					if (a_cargar < 0) {
-						System.out.println("No se pudo realizar la operaciÃ³n.");
+						System.out.println("No se pudo realizar la operación.");
 					}else {
 						Main.fondos[Main.usuario_actual] += a_cargar;
-						System.out.println("Â¡Su importe se ha aï¿½adido con exito!");
+						System.out.println("¡Su importe se ha añadido con exito!");
 					}
 					break;
 					
-				case 3:
+				case 3: // Hacer transaccion a otro usuario.
 					System.out.print("Ingrese el usuario del destinatario: ");
 					String destinatario = Main.sc.next().toLowerCase();
 					
@@ -65,28 +60,28 @@ public class Menus {
 					
 					System.out.print("\nEsta seguro de hacer esta transaccion (S/n): ");
 					if (Main.sc.next().toLowerCase().equals("s")){
-						if (Utilidades.Transaccion(destinatario, Main.fondos[Main.usuario_actual], monto)) {
-							System.out.println("\n\nÂ¡Se ha realizado la transaccion con Ã©xito! ");
+						if (UtilidadesUsuario.Transaccion(destinatario, Main.fondos[Main.usuario_actual], monto)) {
+							System.out.println("\n\n¡Se ha realizado la transaccion con éxito! ");
 						}else {
-							System.out.println("\nHubo un error al realizar la transacciÃ³n.");
+							System.out.println("\nHubo un error al realizar la transacción.");
 						}
 					}
 					break;
 					
-				case 4:
+				case 4: // Ver saldo de la cuenta
 					System.out.println("Sus fondos actuales son de $%s".formatted(Main.fondos[Main.usuario_actual]));
 					break;
 				
-				case 5:
-					Utilidades.CambiarPin();
+				case 5: // Cambiar de pin.
+					UtilidadesUsuario.CambiarPin();
 					break;
 					
-				case 6:
-					System.out.println("Â¡Vuelva pronto!\n\n");
+				case 6: // Cerrar sesión.
+					System.out.println("¡Vuelva pronto!\n\n");
 					return true;
 					
-				default:
-					System.out.println("El nÃºmero ingresado no coincide con ninguna de las opciones del menÃº.");
+				default: // En caso de no ingresado ninguna de las opciones listadas.
+					System.out.println("El número ingresado no coincide con ninguna de las opciones del menú.");
 					break;
 				}
 				
@@ -105,17 +100,17 @@ public class Menus {
 							 + "\n 1. Crear usuario"
 							 + "\n 2. Ver la lista de usuarios"
 							 + "\n 3. Cambiar pin"
-							 + "\n 4. Salir"
+							 + "\n 4. Cerrar sesión"
 							 + "\n 5. Cerrar programa");
 			
 			try{Thread.sleep(800);}catch(InterruptedException e){;}
-			System.out.print("\nIngrese una opciÃ³n: ");
+			System.out.print("\nIngrese una opción: ");
 			entrada = Main.sc.nextInt();
 			
 			System.out.println("");
 			
 			switch(entrada) {
-			case 1:
+			case 1: // Crear usuario.
 				
 				// Aviso.
 				
@@ -135,13 +130,13 @@ public class Menus {
 					System.out.print("Ingrese el nombre de el nuevo usuario: ");				
 					nombre_usuario = Main.sc.next().toLowerCase();
 					
-					// Si se generÃ³ un error al momento de crear el usuario la variable va a valer "true"
-					// Por contrario si no hubo nigÃºn error va a devolver "false"
+					// Si se genera un error al momento de crear el usuario la variable va a valor veradero
+					// Por contrario si no hubo ningún error va a devolver falso
 					
-					errores_usuario = Utilidades.CrearUsuario(nombre_usuario);
+					errores_usuario = UtilidadesUsuario.CrearUsuario(nombre_usuario);
 					
 					if (errores_usuario) {
-						System.out.println("El nombre de usuario ya estÃ¡ registrado.");
+						System.out.println("El nombre de usuario ya está registrado.");
 						try{Thread.sleep(200);}catch(InterruptedException e){;}
 						System.out.println("\nVuelva a intentar.");
 						try{Thread.sleep(400);}catch(InterruptedException e){;}
@@ -155,25 +150,25 @@ public class Menus {
 				
 				break;
 			
-			case 2:
-				Utilidades.Tabla_Usuarios();
+			case 2: // Ver lista de usuarios.
+				UtilidadesUsuario.Tabla_Usuarios();
 				break;
 				
-			case 3:
-				Utilidades.CambiarPin();
+			case 3: // Cambiar pin.
+				UtilidadesUsuario.CambiarPin();
 				break;
 				
-			case 4:
-				System.out.println("Â¡Vuelva pronto!\n\n");
+			case 4: // Cerrar sesión.
+				System.out.println("¡Vuelva pronto!\n\n");
 				return true;
 				
-			case 5:
+			case 5: // Cerrar programa.
 					System.out.print("\nCerando el programa");
 					Funciones.TresPuntos();
 					return false;
 				
-			default:
-				System.out.println("El nÃºmero ingresado no coincide con ninguna de las opciones del menï¿½.");
+			default: // En caso de no ingresado ninguna de las opciones listadas.
+				System.out.println("El número ingresado no coincide con ninguna de las opciones del menú.");
 				break;
 			}
 			

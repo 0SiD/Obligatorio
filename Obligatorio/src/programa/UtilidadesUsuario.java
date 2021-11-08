@@ -1,8 +1,10 @@
 package programa;
 
-public class Utilidades {
+public class UtilidadesUsuario {
 	
 	public static boolean CrearUsuario(String nombre) {
+			
+			// Revisa que el usuario no esté en la lista y si es así devuelve verdadero.
 		
 			for (int i = 0; i < Main.usuarios.length; i++) {
 				if(Main.usuarios[i].equals(nombre)) {
@@ -10,26 +12,24 @@ public class Utilidades {
 				}
 			}
 
-			// Se aÃ±ade el usuario, con el pin por defecto.
+			// De lo contario se añade el usuario, con el pin por defecto y con fondos 0 y se devuelve el valor falso.
 			
 			Funciones.agregar_usuario(nombre);
 			Main.pines = Funciones.agregar_entero_arreglo(Main.pines, Main.pin_defecto);
 			Main.fondos = Funciones.agregar_entero_arreglo(Main.fondos, 0);
 			
 			return false;
-			
-			// Cuando la clase devuelve falso es que el usuario no estÃ¡ en la lista.
-			
+						
 		}
 	
 	public static void CambiarPin() {
 		
-		// Se inicializan las varibales para el pin anterior y la verificaciÃ³n del mismo.
+		// Se inicializan las varibales para el pin anterior y la verificación del mismo.
 		int pin = Main.pines[Main.usuario_actual];
 		int pin_anterior = pin;
 		int verificacion = 0;
 	
-		// Se ejecuta este trozo de cÃ³digo una vez al menos y se reptite mientras el pin no sea igual a la verificaciÃ³n,
+		// Se ejecuta este trozo de código una vez al menos y se reptite mientras el pin no sea igual a la verificación,
 		
 		do {
 						
@@ -66,10 +66,10 @@ public class Utilidades {
 		
 		} while(verificacion != pin || (pin+"").length() < 4 || pin_anterior == pin);
 		
-		Main.pines[Main.usuario_actual]=pin;
+		Main.pines[Main.usuario_actual]=pin; // Se cambia el pin al nuevo.
 		
 	}
-	public static boolean Transaccion(String usuario, int fondos, int monto) {
+	public static boolean Transaccion(String usuario, int fondos, int monto) { // Esta función se encarga de las transacciones, devolviendo verdadero si se pudo realizar la transacción o falso si no es así.
 		if (monto <= fondos) {
 			for (int i = 0; i < Main.usuarios.length; i++) {
 				if (Main.usuarios[i].equals(usuario)) {
@@ -83,7 +83,7 @@ public class Utilidades {
 		return false;
 	}
 	
-	public static void Tabla_Usuarios(){
+	public static void Tabla_Usuarios(){ // Imprime la tabla de usuarios, mostrando sus fondos.
 
 		System.out.println("\nTabla de usuarios:\n");
 		for (int i = 1; i < Main.usuarios.length; i++)

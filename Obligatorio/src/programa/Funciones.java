@@ -11,7 +11,7 @@ public class Funciones {
 	}
 	
 	public static int[] agregar_entero_arreglo(int[] arreglo, int numero) {	
-		// Se aumenta la longitud del arreglo en 1 y se le agrega el numero como argumento.
+		// Se aumenta la longitud del arreglo en 1 y se le agrega el numero pasado como argumento.
 		
 		arreglo = Arrays.copyOf(arreglo, arreglo.length + 1);
 		arreglo[arreglo.length-1] = numero;
@@ -20,7 +20,7 @@ public class Funciones {
 	
 	public static void remover(String[] arreglo, int numero) { 
 		/* Si el elemento que se quiere quitar del arreglo esta en la mitad del mismo, este se reacomoda usando
-		   ese "for", sacando el elemento en cuestiÃ³n, para que al final se reduzca la longitud del arreglo. */
+		   ese "for", sacando el elemento en cuestión, para que al final se reduzca la longitud del arreglo. */
 			
 		for(int i = numero+1; i < arreglo.length; i++)
 			arreglo[i-1] = arreglo[i];
@@ -45,16 +45,16 @@ public class Funciones {
 			System.out.print("Ingrese el pin: ");
 			pin_ingresado = Main.sc.nextInt();
 		 
-			// Se comprueba si los datos ingresados estÃ¡n en la lista.
+			// Se comprueba si los datos ingresados están en la lista.
 		 
 			for (int i = 0; i < Main.usuarios.length; i++) {
 				if (usuario_ingresado.equals(Main.usuarios[i]) && pin_ingresado == Main.pines[i]) {
-					System.out.println("\nHaz iniciado sesiÃ³n como %s.\n".formatted(usuario_ingresado));
+					System.out.println("\nHaz iniciado sesión como %s.\n".formatted(usuario_ingresado));
 					return i;
 				} 	
 			}
 		 
-			// Si se comprobaron todos los casos y el usuario no estÃ¡ en el arreglo, se da un mensaje de error.
+			// Si se comprobaron todos los casos y el usuario no está en el arreglo, se da un mensaje de error.
 			
 			System.out.print("\nEl usuario y/o el pin ingresado son incorrectos");
 			TresPuntos();				
