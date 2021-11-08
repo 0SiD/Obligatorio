@@ -11,7 +11,7 @@ public class Main {
 	static int pin_defecto = 1234;
 	static int usuario_actual;
 
-	// Se crea el array de usuarios, fondos y pines, con el usuario administrador, además de su pin y sus fond.
+	// Se crea el array de usuarios, fondos y pines, con el usuario administrador, además de su pin y sus fondos.
 	
 	static String[] usuarios = {"administrador"};
 	static int[] pines = {pin_defecto};
@@ -22,7 +22,7 @@ public class Main {
 		
 		// Se crea otro array y se le añaden los posibles nombres para los usuarios por defecto.
 		
-		String[] nombres = {"juan", "pablo", "ana", "luis", "sofia", "antonella", "rosario", "josé"};
+		String[] nombres = {"juan", "pablo", "ana", "luis", "sofia", "antonella", "rosario", "jose"};
 				
 		// Se inicializan las variables.
 				
