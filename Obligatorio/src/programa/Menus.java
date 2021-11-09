@@ -24,7 +24,7 @@ public class Menus {
 				switch(entrada) {
 				case 1: // Retirar dinero.
 					
-					System.out.println("Actualmente tiene $%s".formatted(Main.fondos[Main.usuario_actual]));
+					System.out.printf("Actualmente tiene $%d\n",Main.fondos[Main.usuario_actual]);
 					System.out.print("¿Cuánto dinero desea retirar? ");
 					a_retirar = Main.sc.nextInt();
 					
@@ -32,8 +32,8 @@ public class Menus {
 						System.out.println("\nHubo un error al realizar la transacción.");
 					}else if (a_retirar % 100 == 0) {	
 						Main.fondos[Main.usuario_actual] -= a_retirar;
-						System.out.println("\nSe han retirado $%s.\n".formatted(a_retirar)
-										 + "Su cuenta a quedado con $%s".formatted(Main.fondos[Main.usuario_actual]));
+						System.out.printf("\nSe han retirado $%d.\n"
+										 + "Su cuenta a quedado con $%d\n",a_retirar,Main.fondos[Main.usuario_actual]);
 					}else{
 						System.out.println("\nEl numero ingresado no es múltiplo de 100.");
 					}
@@ -69,7 +69,7 @@ public class Menus {
 					break;
 					
 				case 4: // Ver saldo de la cuenta
-					System.out.println("Sus fondos actuales son de $%s".formatted(Main.fondos[Main.usuario_actual]));
+					System.out.printf("Sus fondos actuales son de $%d\n",Main.fondos[Main.usuario_actual]);
 					break;
 				
 				case 5: // Cambiar de pin.

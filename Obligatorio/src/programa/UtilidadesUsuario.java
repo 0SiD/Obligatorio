@@ -87,7 +87,7 @@ public class UtilidadesUsuario {
 
 		System.out.println("\nTabla de usuarios:\n");
 		for (int i = 1; i < Main.usuarios.length; i++)
-			System.out.println("\t %s - $%s".formatted(Main.usuarios[i], Main.fondos[i]));
+			System.out.printf("\t %s - $%d\n",Main.usuarios[i],Main.fondos[i]);
 		
 	}
 }

@@ -49,7 +49,7 @@ public class Funciones {
 		 
 			for (int i = 0; i < Main.usuarios.length; i++) {
 				if (usuario_ingresado.equals(Main.usuarios[i]) && pin_ingresado == Main.pines[i]) {
-					System.out.println("\nHaz iniciado sesión como %s.\n".formatted(usuario_ingresado));
+					System.out.printf("\nHaz iniciado sesión como %s.\n",usuario_ingresado);
 					return i;
 				} 	
 			}
